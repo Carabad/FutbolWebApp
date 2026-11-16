@@ -1,0 +1,13 @@
+# Carpetas temporales y de compilacion de DataFlex
+/Programs/
+/DData/
+/Data/
+/Precompile/
+/Html/
+
+# Archivos locales de configuracion
+*.local
+*.vdfrec
+*.vdfuser
+Thumbs.db
+Desktop.ini

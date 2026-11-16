@@ -1,0 +1,14 @@
+[Header]
+Mask=*.src;*.vw;*.sl;*.dg;*.rv;*.bp;*.pkg;*.wo;*.dd;*.inc;*.tpl;*.dfo;*.asp;*.asa;*.html;*.css;*.js
+Active=0
+SubDirectories=1
+WholeWordOnly=0
+RegularExpression=0
+SearchWhere=0
+Location=D:\Dataflex\IdeSrc\Óscar_FindInFiles.dsk
+[D:\Dataflex\AppSrc]
+IsEnabled=1
+[D:\Dataflex\DDSrc]
+IsEnabled=1
+[D:\Dataflex\AppHtml]
+IsEnabled=1
