@@ -7,6 +7,9 @@ Use cWebPanel.pkg
 Use cWebMenuGroup.pkg
 Use cWebMenuItem.pkg
 Use cWebForm.pkg
+Use cWebButton.pkg
+Use SelectLiga.wo
+Use SelectPosicion.wo
 
 Use cligaDataDictionary.dd
 Use cequipoDataDictionary.dd
@@ -25,15 +28,15 @@ Object oZoomJugador is a cWebView
     End_Object 
 
     Object oequipo_DD is a cequipoDataDictionary
-        Set DDO_Server To oliga_DD
+        Set DDO_Server to oliga_DD
     End_Object 
 
     Object ojugador_DD is a cjugadorDataDictionary
-        Set DDO_Server To oequipo_DD
+        Set DDO_Server to oequipo_DD
     End_Object 
 
-    Set Main_DD To ojugador_DD
-    Set Server  To ojugador_DD
+    Set Main_DD to ojugador_DD
+    Set Server  to ojugador_DD
 
 
     Object oWebMainPanel is a cWebPanel
@@ -48,11 +51,14 @@ Object oZoomJugador is a cWebView
             Set psLabel to "ID"
             Set pbPromptButton to True
 
-// ToDo: Fill in the from-child parent Select view object name for navigate forward
-//            WebRegisterPath ntNavigateForward oSelectView
+            WebRegisterPath ntNavigateForward oSelectLiga
 
             Procedure OnPrompt
                 Send NavigatePath
+            End_Procedure
+
+            Procedure OnGetNavigateForwardData tWebNavigateData ByRef NavigateData Handle hoToView
+                Move nfFromChild to NavigateData.eNavigateType
             End_Procedure
         End_Object 
 
@@ -64,11 +70,14 @@ Object oZoomJugador is a cWebView
             Set psLabel to "Nombre"
             Set pbPromptButton to True
 
-// ToDo: Fill in the from-child parent Select view object name for navigate forward
-//            WebRegisterPath ntNavigateForward oSelectView
+            WebRegisterPath ntNavigateForward oSelectLiga
 
             Procedure OnPrompt
                 Send NavigatePath
+            End_Procedure
+
+            Procedure OnGetNavigateForwardData tWebNavigateData ByRef NavigateData Handle hoToView
+                Move nfFromChild to NavigateData.eNavigateType
             End_Procedure
         End_Object 
 
@@ -80,11 +89,14 @@ Object oZoomJugador is a cWebView
             Set psLabel to "Pais"
             Set pbPromptButton to True
 
-// ToDo: Fill in the from-child parent Select view object name for navigate forward
-//            WebRegisterPath ntNavigateForward oSelectView
+            WebRegisterPath ntNavigateForward oSelectLiga
 
             Procedure OnPrompt
                 Send NavigatePath
+            End_Procedure
+
+            Procedure OnGetNavigateForwardData tWebNavigateData ByRef NavigateData Handle hoToView
+                Move nfFromChild to NavigateData.eNavigateType
             End_Procedure
         End_Object 
 
@@ -102,6 +114,18 @@ Object oZoomJugador is a cWebView
             Set piColumnIndex to 0
             Set peLabelPosition to lpTop
             Set psLabel to "EquiposMax"
+        End_Object 
+
+        Object oSelectPosicionBtn is a cWebButton
+            Set piColumnSpan to 4
+            Set piColumnIndex to 0
+            Set psCaption to "Select posición"
+
+            WebRegisterPath ntNavigateForwardCustom oSelectPosicion
+
+            Procedure OnClick
+                Send NavigateForwardCustom of oSelectPosicion Self
+            End_Procedure
         End_Object 
     End_Object 
 
@@ -206,4 +230,4 @@ Object oZoomJugador is a cWebView
 
     End_Procedure
 
-End_Object 
+End_Object
